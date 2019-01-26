@@ -15,3 +15,11 @@
 内訳： controllerを通して、StaticPagesを作成する。 中のURLは`home`と`help`があるよ的な
 
 url -> `htpp://{hostname}/static_pages/help` パスカルケースはスネークケースへと変換されるっぽい。
+
+あと基本的にRailsはスネークケースで記述を行う。
+
+## 削除したい時は
+
+`$ rails destroy  controller StaticPages home help`
+
+上記の生成と位置的にも逆なコマンド
