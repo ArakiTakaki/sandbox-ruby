@@ -5,6 +5,7 @@
 | rails s  | rails server   | サーバの構築を行う                   |
 | rails c  | rails console  | サーバーコンソールを起動する         |
 | rails g  | rails generate | 各種ファイルの生成をおこなう         |
+| rails d  | rails destroy  | generateで作成したものを削除する     |
 | rails t  | rails test     | テストを行う                         |
 | bundle   | bundle install | 各種バンドルのインストールを実施する |
 
