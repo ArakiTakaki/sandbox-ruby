@@ -1,10 +1,14 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const isSourceMap = true;
 
 module.exports = {
 	mode: 'development',
 	entry: ['./src/ts/index.tsx'],
+	resolve: {
+		extensions: ['.js', '.tsx', '.ts']
+	},
 	module: {
 		rules: [
 			{
@@ -13,7 +17,7 @@ module.exports = {
 				use: ['ts-loader']
 			},
 			{
-				test: /\.sass$/,
+				test: /\.(sass|scss)$/,
 				use: [
 					{
 						loader: 'style-loader'
@@ -28,27 +32,21 @@ module.exports = {
 					},
 					{
 						loader: 'postcss-loader',
+						options: {
+							sourceMap: isSourceMap,
+							plugins: [require('autoprefixer')({ grid: true })]
+						}
 					},
 					{
 						loader: 'sass-loader',
 						options: {
 							sourceMap: isSourceMap
 						}
-					},
-					{
-						loader: 'sass-resources-loader',
-						options: {
-							sourceMap: isSourceMap,
-							resources: [path.resolve('./src/sass/resources/*.sass')]
-						}
 					}
 				]
 			}
 		]
 	},
-	resolve: {
-		extensions: ['.ts', '.tsx']
-	}
 	devtool: 'inline-source-map',
 	output: {
 		path: path.resolve(__dirname, './dist/js'),
@@ -61,8 +59,8 @@ module.exports = {
 		port: 3030,
 		// 他デバイスで見たい時用
 		host: '0.0.0.0',
-		hot: true,
 		overlay: true,
+		hot: true,
 		filename: 'bundle.js',
 		publicPath: '/',
 		stats: {
@@ -70,6 +68,7 @@ module.exports = {
 		}
 	},
 	plugins: [
+		new webpack.HotModuleReplacementPlugin(),
 		new HtmlWebpackPlugin({
 			inject: true,
 			hash: true,
