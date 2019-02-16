@@ -39,13 +39,16 @@ module.exports = {
 						loader: 'sass-resources-loader',
 						options: {
 							sourceMap: isSourceMap,
-							resources: [path.resolve('./src/scss/resources/*.scss')]
+							resources: [path.resolve('./src/sass/resources/*.sass')]
 						}
 					}
 				]
 			}
 		]
 	},
+	resolve: {
+		extensions: ['.ts', '.tsx']
+	}
 	devtool: 'inline-source-map',
 	output: {
 		path: path.resolve(__dirname, './dist/js'),
