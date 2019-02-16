@@ -1,24 +1,25 @@
+import * as Axios from 'axios';
 import React from 'react';
 import { hot } from 'react-hot-loader';
 
-const styles = require('./Index.sass');
-
-interface Props{
-  children?:any
+interface Props {
+	children?: any;
 }
-interface State{}
+interface State {}
 @hot(module)
 class Index extends React.Component<Props, State> {
-  constructor(props: Props) {
+	constructor(props: Props) {
     super(props);
   }
-  public render() {
-    return (
-      <div>
-        sampleaiueoasdf
-      </div>
-    );
+
+  public async componentWillMount() {
+    const res = await Axios.default.get('http://localhost:3000/users.json')
+    console.log(res);
   }
+
+	public render() {
+		return <div>sampleaiueoasdf</div>;
+	}
 }
 
 export default Index;
