@@ -63,3 +63,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # railsにおけるcorsを設定してくれる
 gem 'rack-cors'
+
+# graphqlを使用してみる
+gem 'graphql'
+gem 'graphiql-rails', group: :development
